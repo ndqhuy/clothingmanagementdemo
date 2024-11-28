@@ -1,0 +1,200 @@
+openapi: 3.0.1
+info:
+  title: Service
+  version: 1.0.0
+paths:
+  /categories:
+    get:
+      operationId: getAllCategories
+      responses:
+        "200":
+          description: getAllCategories 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+    post:
+      operationId: createCategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+        required: true
+      responses:
+        "200":
+          description: createCategory 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+  /categories/{id}:
+    get:
+      operationId: getCategory
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: getCategory 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+    put:
+      operationId: updateCategory
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+        required: true
+      responses:
+        "200":
+          description: updateCategory 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+    delete:
+      operationId: deleteCategory
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: deleteCategory 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+  /clothingitems:
+    get:
+      operationId: getAllClothingItems
+      responses:
+        "200":
+          description: getAllClothingItems 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Clothingitems"
+    post:
+      operationId: createClothingItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Clothingitems"
+        required: true
+      responses:
+        "200":
+          description: createClothingItem 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Clothingitems"
+  /clothingitems/{id}:
+    get:
+      operationId: getClothingItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: getClothingItem 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Clothingitems"
+    put:
+      operationId: updateClothingItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Clothingitems"
+        required: true
+      responses:
+        "200":
+          description: updateClothingItem 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Clothingitems"
+    delete:
+      operationId: deleteClothingItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: deleteClothingItem 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+  /clothingmanagement:
+    get:
+      operationId: index
+      responses:
+        "200":
+          description: index 200 response
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    Clothingitems:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        size:
+          type: string
+        color:
+          type: string
+        price:
+          type: number
+          format: double
+        categoryId:
+          type: string
